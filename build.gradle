@@ -1,0 +1,49 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.app'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testImplementation 'com.github.jsm-frontend:javancss:2.2.8'
+	implementation 'org.jsoup:jsoup:1.17.2'
+
+	// https://mvnrepository.com/artifact/xml-apis/xml-apis
+	implementation 'xml-apis:xml-apis:2.0.2'
+
+	implementation 'com.sun.xml.bind:jaxb-core:2.3.3'
+	// https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
+	implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
+
+	// https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api
+	implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
